@@ -1,3 +1,7 @@
-Host github.com
+Host github.com-webserver
         Hostname github.com
-        IdentityFile=/home/user/.ssh/gitkey
+        IdentityFile=/home/user/.ssh/cfpdxserver
+
+Host github.com-client
+        Hostname github.com
+        IdentityFile=/home/user/.ssh/cfpdxclient
