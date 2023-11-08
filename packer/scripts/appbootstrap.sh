@@ -27,6 +27,7 @@ ssh-add ~/.ssh/cfpdxclient
 GIT_SSH_COMMAND="ssh -o StrictHostKeyChecking=accept-new" git clone git@github.com-client:cfpdx/client.git
 
 cd webserver
+mkdir client
 
 # Install essential application packages
 sudo npm ci

@@ -19,6 +19,12 @@ Before you begin, ensure you have the following software installed:
    cd webserver
    npm ci
 
+2. Create local client directory and copy over client application:
+
+   ```bash
+   mkdir client
+   cp -r ~/absolute/path/to/client/src/folder ./client
+
 ## Usage
 
 2. Start the server:
