@@ -7,8 +7,8 @@ var logger = require('morgan');
 
 var app = express();
 
-// var apiRouter = require('./routes/api');
-// var indexRouter = require('./routes/index')
+var apiRouter = require('./routes/api');
+var indexRouter = require('./routes/index');
 
 app.use(logger('dev'));
 app.use(express.json());
@@ -16,12 +16,8 @@ app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'client')));
 
-app.get('*', (req, res) => {
-  res.sendFile(path.join(__dirname, 'client', 'index.html'));
-});
-
-// app.use('/api', apiRouter);
-// app.use('*', indexRouter);
+app.use('/api', apiRouter);
+app.use('*', indexRouter);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
