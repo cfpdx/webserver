@@ -33,14 +33,14 @@ build {
     destination = "/tmp/cfpdxweb.config"
   }
 
-  provisioner "file" {
-    source      = "./templates/sshconfig.template"
-    destination = "/tmp/sshconfig"
-  }
-
   provisioner "shell" {
     environment_vars = ["ENV=prod"]
     scripts          = ["./scripts/sysbootstrap.sh"]
+  }
+
+  provisioner "file" {
+    source      = "./templates/sshconfig.template"
+    destination = "/tmp/sshconfig"
   }
 
   provisioner "breakpoint" {
