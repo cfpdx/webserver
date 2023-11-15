@@ -6,7 +6,7 @@ sudo apt-get update
 sudo apt-get upgrade -y -q
 
 # Install essential build tools and libraries
-sudo apt-get install -y -q build-essential nginx nodejs npm nmap jq unzip
+sudo apt-get install -y -q build-essential nginx nodejs npm nmap jq unzip netstat
 
 ## PROXY
 # Kick start server config to run on boot
