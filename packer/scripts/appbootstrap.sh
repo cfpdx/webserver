@@ -26,10 +26,18 @@ ssh-add ~/.ssh/cfpdxclient
 # Clone client repo
 GIT_SSH_COMMAND="ssh -o StrictHostKeyChecking=accept-new" git clone git@github.com-client:cfpdx/client.git
 
-cd webserver
-mkdir client
+# Build client and copy to server
+cd client
+npm i
+npm run build
 
-# Install essential application packages
-sudo npm ci
+cd ..
+mkdir webserver/client
+cp -r client/dist/* webserver/client
+
+# Install dependencies and start server
+cd webserver
+npm i
+npm start
 
 sudo systemctl restart nginx
