@@ -6,7 +6,7 @@ sudo apt update
 sudo apt upgrade -y -q
 
 # Install essential build tools and libraries
-sudo apt install -y -q build-essential nginx nmap jq unzip
+sudo apt install -y -q build-essential nginx nmap npm jq unzip
 sudo apt install net-tools
 
 ## CONFIG
