@@ -1,0 +1,12 @@
+[Unit]
+Description=CFPDX Express.js App
+After=network.target
+
+[Service]
+ExecStart=/home/ubuntu/webserver/scripts/runweb.sh
+WorkingDirectory=/home/ubuntu/
+User=ubuntu
+Restart=always
+
+[Install]
+WantedBy=multi-user.target

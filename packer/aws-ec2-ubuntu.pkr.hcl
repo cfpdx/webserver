@@ -43,6 +43,11 @@ build {
     destination = "/tmp/sshconfig"
   }
 
+  provisioner "file" {
+    source      = "./templates/express.service.template"
+    destination = "/tmp/express.service"
+  }
+
   provisioner "breakpoint" {
     disable = false
     note    = "ADD web_ssm_access IAM INSTANCE PROFILE TO EC2 IN AWS CONSOLE TO CONTINUE..."
