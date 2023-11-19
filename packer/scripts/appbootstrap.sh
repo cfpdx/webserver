@@ -26,18 +26,25 @@ ssh-add ~/.ssh/cfpdxclient
 # Clone client repo
 GIT_SSH_COMMAND="ssh -o StrictHostKeyChecking=accept-new" git clone git@github.com-client:cfpdx/client.git
 
+# Load nvm
+export NVM_DIR="$HOME/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+
+# Set node version
+nvm use 18.12.0
+
 # Build client and copy to server
 cd client
 npm i
 npm run build
 
-cd ..
+cd ~
 mkdir webserver/client
 cp -r client/dist/* webserver/client
 
-# Install dependencies and start server
+# Install dependencies
 cd webserver
 npm i
-npm start
 
 sudo systemctl restart nginx
