@@ -5,12 +5,15 @@
 ## APP
 cd ~
 
+# Copy needed config
+sudo cp /tmp/sshconfig .ssh/config
+sudo cp /tmp/express.service /etc/systemd/system
+
 # Copy git SSH Keys config from SSM params 
 aws ssm get-parameter --name webServerGit --with-decryption --output text --query Parameter.Value > .ssh/cfpdxserver
 aws ssm get-parameter --name webClientGit --with-decryption --output text --query Parameter.Value > .ssh/cfpdxclient
 chmod 600 .ssh/cfpdxserver
 chmod 600 .ssh/cfpdxclient
-sudo cp /tmp/sshconfig .ssh/config
 
 # Configure Agent
 eval "$(ssh-agent -s)"
@@ -47,4 +50,8 @@ cp -r client/dist/* webserver/client
 cd webserver
 npm i
 
+# Finalize services
 sudo systemctl restart nginx
+
+sudo systemctl enable express.service
+sudo systemctl start express.service
