@@ -1,5 +1,6 @@
-# Fetching the minified node image on apline linux
-FROM node:18-slim
+# Need to be logged into ECR
+ARG AWS_ACCOUNT_ID=override_me
+FROM ${AWS_ACCOUNT_ID}.dkr.ecr.us-east-1.amazonaws.com/client
 
 # Declaring env
 ENV NODE_ENV=prod
@@ -40,6 +41,9 @@ COPY routes/ routes/
 
 # Installing dependencies
 RUN npm ci
+
+# Move client dir into app dir
+RUN mv ../client/ .
 
 # Exposing server port
 EXPOSE 80
